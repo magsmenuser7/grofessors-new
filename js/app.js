@@ -162,3 +162,71 @@ if (lightDarkBtn) {
 //         }
 //     });
 // }
+
+function submitbtn() {
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+    let phone = document.getElementById('phone').value;
+    let comments = document.getElementById('comments').value;
+
+    let errorMsg = document.getElementById('error-msg');
+    errorMsg.innerHTML = ''; // Clear previous error messages
+
+    if (name === "") {
+        alert("Name Field Required")
+        return;
+    }
+
+    if (email === "") {
+        alert("Email Field Required")
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        alert("Invalid Email Format")
+        return;
+    }
+
+    if (phone === "") {
+        alert("Phone Field Required")
+        return;
+    }
+
+    if (!validatePhone(phone)) {
+        alert("Invalid Phone Format")
+        return false;
+    }
+
+    if (comments === "") {
+        alert("Comments Field Required")
+        return;
+    }
+
+    let formdata = {
+        name: name,
+        email: email,
+        phone: phone,
+        comments: comments
+    }
+
+    emailjs.send('service_bjq4py6', 'template_zts7fue', formdata)
+        .then(function(res) {
+            alert("Form submission successful");
+            document.getElementById('contact-form').reset();
+
+        }, function(error) {
+            alert("Form submission failed: " + JSON.stringify(error));
+        });
+
+    return false; // Prevent form from submitting normally
+}
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+}
+
+function validatePhone(phone) {
+    const re = /^[0-9]{10}$/; // Example for a 10-digit phone number
+    return re.test(String(phone));
+}
+
