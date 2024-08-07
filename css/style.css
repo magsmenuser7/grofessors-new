@@ -472,6 +472,28 @@ p {
 #contact-form{
   margin-bottom: 10px !important;
 }
+.mx-4 {
+  margin-right:0px !important;
+  margin-left:0px !important;
+  margin-top: 30px !important;
+  /* text-align: center !important; */
+}
+.mx-5 {
+  margin-right:0px !important;
+  margin-left:0px !important;
+  margin-top: 30px !important;
+  /* text-align: center !important; */
+}
+.mx-4 h3{
+  text-align: center !important;
+}
+.mx-5 h3{
+  text-align: center !important;
+}
+.service-img img{
+  margin: auto !important;
+  display: block !important;
+}
 }
 @media (min-width: 1200px) {
   .home-sec-title{
